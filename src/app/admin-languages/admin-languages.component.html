@@ -1,40 +1,46 @@
 <div class="language-section">
-    <div class="card">
-      <h2>Idiomas</h2>
-    </div>
-  
-    <div class="card">
-      <form (ngSubmit)="AgregarLanguage()">
-        <label for="language">Idioma</label>
-        <input
-          type="text"
-          id="language"
-          class="txt"
-          name="language"
-          placeholder="Ej: Inglés"
-          [(ngModel)]="myLanguage.language"
-        />
-  
-        <label for="percentage">Porcentaje de dominio</label>
-        <input
-          type="text"
-          id="percentage"
-          class="txt"
-          name="percentage"
-          placeholder="Ej: 90%"
-          [(ngModel)]="myLanguage.percentage"
-        />
-  
-        <button type="submit" class="btn">Agregar</button>
-      </form>
-    </div>
-  
-    <div class="card">
-      <h3>Tus idiomas</h3>
-      <div *ngFor="let lang of languages" class="life-container">
-        <button type="button" class="btn danger" (click)="deleteLanguage(lang.id)">Eliminar</button>
-        {{ lang.language }} - {{ lang.percentage }}
+  <div class="card">
+    <h2>Idiomas</h2>
+  </div>
+
+  <div class="card">
+    <form (ngSubmit)="AgregarLanguage()">
+      <label for="language">Idioma</label>
+      <input
+        type="text"
+        id="language"
+        class="txt"
+        name="language"
+        placeholder="Idioma"
+        [(ngModel)]="myLanguage.language"
+        required
+      />
+
+      <label for="level">Nivel</label>
+      <input
+        type="text"
+        id="level"
+        class="txt"
+        name="level"
+        placeholder="Porcentaje (ej. 90%)"
+        [(ngModel)]="myLanguage.percentage"
+        required
+      />
+
+      <button type="submit" class="btn">{{ btntxt }}</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3>Idiomas Guardados</h3>
+    <div *ngFor="let lang of languages" class="life-container">
+      <div class="language-details">
+        <strong>{{ lang.language }}</strong> - {{ lang.percentage }}
+      </div>
+      <div class="language-actions">
+        <button class="btn danger" (click)="deleteLanguage(lang.id)">Eliminar</button>
+        <button class="btn" (click)="editLanguage(lang)">Editar</button>
       </div>
     </div>
   </div>
-  
+</div>

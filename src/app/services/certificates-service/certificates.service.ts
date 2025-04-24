@@ -26,4 +26,8 @@ export class CertificatesService {
    deleteCertificate(id? : string) : Promise<void> {
       return this.certificateRef.doc(id).delete();
    }
+
+   updateCertificate(id: string, data: certificates): Promise<void> {
+      return this.certificateRef.doc(id).update(data);
+    }
 }

@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 export class AdminSkillsComponent {
   skills : Skills [] = [];
   mySkill : Skills = new Skills();
+  btntxt : string = "Guardar"
 
   constructor(public skillsService : SkillsService)
   {
@@ -27,16 +28,33 @@ export class AdminSkillsComponent {
      })
   } 
 
-  AgregarSkill(){
-    console.log(this.mySkill)
-    this.skillsService.createSkill(this.mySkill).then(() => {
-      console.log('created new item succesfully');
+  AgregarSkill() {
+    if (this.mySkill.id) {
+      this.skillsService.updateSkill(this.mySkill.id, this.mySkill).then(() => {
+        console.log('Updated successfully');
+        this.resetForm();
+      });
+    } else {
+      this.skillsService.createSkill(this.mySkill).then(() => {
+        console.log('Created successfully');
+        this.resetForm();
+      });
+    }
+  }
+
+  deleteSkill(id?: string) {
+    this.skillsService.deleteSkill(id).then(() => {
+      console.log('Deleted successfully');
     });
   }
 
-  deleteSkill(id? : string){
-   this.skillsService.deleteSkill(id).then(() => {
-    console.log('delete item succesfully');
-   });
+  editSkill(item: Skills) {
+    this.mySkill = { ...item };
+    this.btntxt = "Actualizar";
+  }
+
+  resetForm() {
+    this.mySkill = new Skills();
+    this.btntxt = "Guardar";
   }
 }

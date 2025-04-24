@@ -4,6 +4,7 @@
     <div *ngFor="let cert of certificates;" class="cert-item">
       <span>{{ cert.certificate }} - {{ cert.year }}</span>
       <button class="btn delete" (click)="deleteCertificate(cert.id)">Eliminar</button>
+      <button class="btn edit" (click)="editCertificate(cert)">Editar</button>
     </div>
   </div>
 

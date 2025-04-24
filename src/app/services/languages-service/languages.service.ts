@@ -28,4 +28,8 @@ export class LanguagesService {
   deleteLanguage(id? : string) : Promise <void>{
     return this.languageRef.doc(id).delete();
   }
+
+  updateLanguage(id: string, data: Language): Promise<void> {
+      return this.languageRef.doc(id).update(data);
+    }
 }

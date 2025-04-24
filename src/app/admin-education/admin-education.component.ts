@@ -28,21 +28,36 @@ export class AdminEducationComponent {
       this.education = data;
       console.log(this.education);
     })
-  }
+   }
 
-  AgregarEducation(){
-    console.log(this.myEducation);
-    this.educationService.createEducation(this.myEducation).then(() => {
-      console.log('create new item succesfully');
-    });
-  }
+   AgregarEducation() {
+    if (this.myEducation.id) {
+      this.educationService.updateEducation(this.myEducation.id, this.myEducation).then(() => {
+        console.log('Updated successfully');
+        this.resetForm();
+      });
+    } else {
+      this.educationService.createEducation(this.myEducation).then(() => {
+        console.log('Created successfully');
+        this.resetForm();
+      });
+    }
+   }
 
-  deleteEducation(id? : string) {
+   deleteEducation(id?: string) {
     this.educationService.deleteEducation(id).then(() => {
-      console.log('delete item succesfully');
+      console.log('Deleted successfully');
     });
-    console.log(id);
+   }
+
+  editEducation(item: Education) {
+    this.myEducation = { ...item };
+    this.btntxt = "Actualizar";
   }
 
+  resetForm() {
+    this.myEducation = new Education();
+    this.btntxt = "Agregar";
+  }
 
 }

@@ -1,19 +1,20 @@
 <div class="education-section">
-  <div class="edu-list card">
-    <h2>Estudios Guardados</h2>
+  <div class="education-list card">
+    <h2>Educación Guardada</h2>
     <div *ngFor="let edu of education;" class="edu-item">
-      <span>{{ edu.Collage }} - {{ edu.Degree }}</span>
+      <span>{{ edu.Degree }} - {{ edu.Collage }} ({{ edu.startDate }} a {{ edu.endDate }})</span>
       <button class="btn delete" (click)="deleteEducation(edu.id)">Eliminar</button>
+      <button class="btn edit" (click)="editEducation(edu)">Editar</button>
     </div>
   </div>
 
-  <div class="edu-form card">
+  <div class="education-form card">
     <h2>{{ btntxt }} Educación</h2>
     <form (ngSubmit)="AgregarEducation()">
-      <input type="text" class="txt" name="startDate" placeholder="Fecha inicio (mmm-yyyy)" [(ngModel)]="myEducation.startDate">
-      <input type="text" class="txt" name="endDate" placeholder="Fecha fin (mmm-yyyy)" [(ngModel)]="myEducation.endDate">
       <input type="text" class="txt" name="Degree" placeholder="Título o grado" [(ngModel)]="myEducation.Degree">
       <input type="text" class="txt" name="Collage" placeholder="Institución" [(ngModel)]="myEducation.Collage">
+      <input type="text" class="txt" name="startDate" placeholder="Fecha inicio (YYYY)" [(ngModel)]="myEducation.startDate">
+      <input type="text" class="txt" name="endDate" placeholder="Fecha fin (YYYY)" [(ngModel)]="myEducation.endDate">
       <button type="submit" class="btn submit">{{ btntxt }}</button>
     </form>
   </div>

@@ -1,30 +1,30 @@
 <div class="interest-section">
-    <div class="card">
-      <h2>Intereses</h2>
-    </div>
-  
-    <div class="card">
-      <form (ngSubmit)="AregarInterest()">
-        <label for="interest">Interés</label>
-        <input
-          type="text"
-          id="interest"
-          class="txt"
-          name="interest"
-          placeholder="¿Qué te interesa?"
-          [(ngModel)]="myInterests.interest"
-        />
-  
-        <button type="submit" class="btn">Guardar</button>
-      </form>
-    </div>
-  
-    <div class="card">
-      <h3>Tus intereses</h3>
-      <div *ngFor="let item of interests" class="life-container">
-        <button type="button" class="btn danger" (click)="deleteInterest(item.id)">Eliminar</button>
-        {{ item.interest }}
-      </div>
+  <div class="card">
+    <h2>Intereses</h2>
+  </div>
+
+  <div class="card">
+    <form (ngSubmit)="AgregarInterest()">
+      <label for="interest">Interés</label>
+      <input
+        type="text"
+        id="interest"
+        class="txt"
+        name="interest"
+        placeholder="¿Qué te interesa?"
+        [(ngModel)]="myInterests.interest"
+      />
+
+      <button type="submit" class="btn">{{ btntxt }}</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3>Tus intereses</h3>
+    <div *ngFor="let item of interests" class="life-container">
+      <button type="button" class="btn danger" (click)="deleteInterest(item.id)">Eliminar</button>
+      <button type="button" class="btn edit" (click)="editInterest(item)">Editar</button>
+      {{ item.interest }}
     </div>
   </div>
-  
+</div>

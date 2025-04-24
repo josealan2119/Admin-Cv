@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 export class AdminLanguagesComponent {
   languages : Language [] = [];
   myLanguage : Language = new Language();
+  btntxt : string = "Guardar";
 
    constructor(public languagesService : LanguagesService)
    {
@@ -28,17 +29,33 @@ export class AdminLanguagesComponent {
      })
    }
 
-   AgregarLanguage(){
-    console.log(this.myLanguage);
-    this.languagesService.createLanguage(this.myLanguage).then(() => {
-      console.log('created a new item successfully');
-    });
-   }
+   AgregarLanguage() {
+    if (this.myLanguage.id) {
+      this.languagesService.updateLanguage(this.myLanguage.id, this.myLanguage).then(() => {
+        console.log('Updated successfully');
+        this.resetForm();
+      });
+    } else {
+      this.languagesService.createLanguage(this.myLanguage).then(() => {
+        console.log('Created successfully');
+        this.resetForm();
+      });
+    }
+  }
 
-   deleteLanguage(id? : string){
+  deleteLanguage(id?: string) {
     this.languagesService.deleteLanguage(id).then(() => {
-      console.log('delete item successfully');
+      console.log('Deleted successfully');
     });
-    console.log(id);
-   }
+  }
+
+  editLanguage(item: Language) {
+    this.myLanguage = { ...item };
+    this.btntxt = "Actualizar";
+  }
+
+  resetForm() {
+    this.myLanguage = new Language();
+    this.btntxt = "Guardar";
+  }
 }

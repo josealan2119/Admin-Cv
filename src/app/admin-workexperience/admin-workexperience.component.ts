@@ -30,18 +30,34 @@ export class AdminWorkexperienceComponent {
     });
   }
 
-  AgregarJob(){
-    console.log(this.myWorkExperience);
-    this.workExperienceService.createWorkExperience(this.myWorkExperience).then(() => {
-      console.log('Created new item successfully');
+  AgregarJob() {
+    if (this.myWorkExperience.id) {
+      this.workExperienceService.updateWorkExperience(this.myWorkExperience.id, this.myWorkExperience).then(() => {
+        console.log('Updated successfully');
+        this.resetForm();
+      });
+    } else {
+      this.workExperienceService.createWorkExperience(this.myWorkExperience).then(() => {
+        console.log('Created successfully');
+        this.resetForm();
+      });
+    }
+  }
+
+  deleteJob(id?: string) {
+    this.workExperienceService.deleteWorkExperience(id).then(() => {
+      console.log('Deleted successfully');
     });
   }
 
-  deleteJob(id? : string){
-    this.workExperienceService.deleteWorkExperience(id).then(() => {
-      console.log('delete item successfully');
-    });
-    console.log(id);
+  editJob(item: WorkExperience) {
+    this.myWorkExperience = { ...item };
+    this.btntxt = "Actualizar";
+  }
+
+  resetForm() {
+    this.myWorkExperience = new WorkExperience();
+    this.btntxt = "Agregar";
   }
 }
 

@@ -12,6 +12,7 @@ export class AdminInterestsComponent {
 
   myInterests : Interests = new (Interests);
   interests : Interests [] = []
+  btntxt : string = "Guardar";
 
   constructor(public interestsService : InterestsService)
   {
@@ -28,16 +29,33 @@ export class AdminInterestsComponent {
     })
   }
 
-  AregarInterest(){
-    console.log(this.myInterests);
-    this.interestsService.createInterests(this.myInterests).then(() => {
-      console.log('created new item successfully');
+  AgregarInterest() {
+    if (this.myInterests.id) {
+      this.interestsService.updateInterests(this.myInterests.id, this.myInterests).then(() => {
+        console.log('Updated successfully');
+        this.resetForm();
+      });
+    } else {
+      this.interestsService.createInterests(this.myInterests).then(() => {
+        console.log('Created successfully');
+        this.resetForm();
+      });
+    }
+  }
+
+  deleteInterest(id?: string) {
+    this.interestsService.deleteInterests(id).then(() => {
+      console.log('Deleted successfully');
     });
   }
 
-  deleteInterest(id? : string){
-    this.interestsService.deleteInterests(id).then(() => {
-      console.log('delete item successfully');
-    });
+  editInterest(item: Interests) {
+    this.myInterests = { ...item };
+    this.btntxt = "Actualizar";
+  }
+
+  resetForm() {
+    this.myInterests = new Interests();
+    this.btntxt = "Guardar";
   }
 }

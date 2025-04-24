@@ -32,17 +32,35 @@ export class AdminCertificatesComponent {
      })
    }
    
-   AgregarCertificates(){
-    console.log(this.myCertificates);
-    this.certificatesService.createCertificate(this.myCertificates).then(() => {
-      console.log('Create new item succesfully!');
-    })   
-   }
+   AgregarCertificates() {
+    if (this.myCertificates.id) {
+      // Si tiene ID, es actualización
+      this.certificatesService.updateCertificate(this.myCertificates.id, this.myCertificates).then(() => {
+        console.log('Updated successfully');
+        this.resetForm();
+      });
+    } else {
+      // Si no tiene ID, es nuevo
+      this.certificatesService.createCertificate(this.myCertificates).then(() => {
+        console.log('Created successfully');
+        this.resetForm();
+      });
+    }
+  }
 
-   deleteCertificate(id? : string){
-     this.certificatesService.deleteCertificate(id).then(() => {
-      console.log('delete item succesfully');
-     });
-     console.log(id);
-   }
+  deleteCertificate(id?: string) {
+    this.certificatesService.deleteCertificate(id).then(() => {
+      console.log('Deleted successfully');
+    });
+  }
+
+  editCertificate(cert: certificates) {
+    this.myCertificates = { ...cert }; // Carga datos al formulario
+    this.btntxt = 'Actualizar';
+  }
+
+  resetForm() {
+    this.myCertificates = new certificates();
+    this.btntxt = 'Agregar';
+  }
 }
