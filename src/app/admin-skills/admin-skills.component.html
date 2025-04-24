@@ -1,0 +1,46 @@
+<div class="skills-section">
+    <div class="card">
+      <h2>Habilidades</h2>
+    </div>
+  
+    <div class="card">
+      <form (ngSubmit)="AgregarSkill()">
+        <label for="skill">Habilidad</label>
+        <input
+          type="text"
+          id="skill"
+          class="txt"
+          name="skill"
+          placeholder="Ej: Java, Photoshop..."
+          [(ngModel)]="mySkill.skill"
+        />
+  
+        <label for="percentage">Porcentaje de dominio</label>
+        <input
+          type="text"
+          id="percentage"
+          class="txt"
+          name="percentage"
+          placeholder="Ej: 85%"
+          [(ngModel)]="mySkill.percentage"
+        />
+  
+        <button type="submit" class="btn">Agregar</button>
+      </form>
+    </div>
+  
+    <div class="card">
+      <h3>Tus habilidades</h3>
+      <div *ngFor="let skill of skills" class="skill-item">
+        <div class="skill-header">
+          <strong>{{ skill.skill }}</strong>
+          <span>{{ skill.percentage }}</span>
+          <button class="btn danger" (click)="deleteSkill(skill.id)">Eliminar</button>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width]="skill.percentage"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

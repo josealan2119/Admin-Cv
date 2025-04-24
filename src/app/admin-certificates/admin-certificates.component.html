@@ -1,0 +1,19 @@
+<div class="certificate-section">
+  <div class="cert-list card">
+    <h2>Certificados Guardados</h2>
+    <div *ngFor="let cert of certificates;" class="cert-item">
+      <span>{{ cert.certificate }} - {{ cert.year }}</span>
+      <button class="btn delete" (click)="deleteCertificate(cert.id)">Eliminar</button>
+    </div>
+  </div>
+
+  <div class="cert-form card">
+    <h2>{{ btntxt }} Certificado</h2>
+    <form (ngSubmit)="AgregarCertificates()">
+      <input type="text" class="txt" name="certificate" placeholder="Nombre del certificado" [(ngModel)]="myCertificates.certificate">
+      <input type="text" class="txt" name="context" placeholder="Contexto o institución" [(ngModel)]="myCertificates.context">
+      <input type="text" class="txt" name="year" placeholder="Año (YYYY)" [(ngModel)]="myCertificates.year">
+      <button type="submit" class="btn submit">{{ btntxt }}</button>
+    </form>
+  </div>
+</div>

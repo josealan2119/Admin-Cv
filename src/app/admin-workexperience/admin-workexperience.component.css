@@ -1,0 +1,77 @@
+.experience-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .card {
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+  }
+  
+  .card h2, .card h3 {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  
+  form label {
+    font-weight: 600;
+    margin-top: 1rem;
+    display: block;
+  }
+  
+  input.txt {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+  }
+  
+  input.txt::placeholder {
+    color: #ccc;
+  }
+  
+  button.btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #3498db;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.3s;
+  }
+  
+  button.btn:hover {
+    background-color: #2980b9;
+  }
+  
+  button.danger {
+    background-color: #e74c3c;
+    margin-top: 0.5rem;
+  }
+  
+  button.danger:hover {
+    background-color: #c0392b;
+  }
+  
+  .experience-item {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .job-details {
+    margin-bottom: 0.5rem;
+  }
+  

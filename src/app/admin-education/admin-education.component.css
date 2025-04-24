@@ -1,0 +1,82 @@
+.education-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 900px;
+  }
+  
+  .card {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #fff;
+  }
+  
+  .edu-list h2,
+  .edu-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  .edu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  input.txt {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1rem;
+  }
+  
+  input.txt::placeholder {
+    color: #ccc;
+  }
+  
+  button.btn {
+    padding: 0.5rem 1.25rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #2980b9;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button.btn:hover {
+    background-color: #3498db;
+    transform: scale(1.05);
+  }
+  
+  button.delete {
+    background-color: #c0392b;
+  }
+  
+  button.delete:hover {
+    background-color: #e74c3c;
+  }
+  
+  @media (max-width: 600px) {
+    .education-section {
+      padding: 1rem;
+    }
+  
+    .edu-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+  
